@@ -1,17 +1,17 @@
 # Lab-11-StatsSloths
 
-* Ariel 1973
+* Ariel 1973 : 52
 ```{r}
-filter(babynames, name == "Ariel", year == 1973, sex == "F")
-# 43
+filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1973,sex=="F")%>%
+  summarise(sum(n))
 ```
-* Ariel 1988
+* Ariel 1988 : 1617
 ```{r}
-filter(babynames, name == "Ariel", year == 1988, sex == "F")
-# 910
+filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1988,sex=="F")%>%
+  summarise(sum(n))
 ```
-* Ariel 1990
+* Ariel 1990 : 5366
 ```{r}
-filter(babynames, name == "Ariel", year == 1990, sex == "F")
-# 3606
+filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1990,sex=="F")%>%
+  summarise(sum(n))
 ```
