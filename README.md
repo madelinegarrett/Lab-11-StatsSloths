@@ -58,5 +58,7 @@ kevin <- filter(babynames,str_detect(babynames$name,"^Kev[aeiouy]n$"), sex=="M")
 
 ggplot() +
   geom_line(data = kev, mapping = aes(x = year, y = proportion, color = "orange")) +
-  geom_line(data = kevin, mapping = aes(x = year, y = proportion, color = "blue"))
+  geom_line(data = kevin, mapping = aes(x = year, y = proportion, color = "blue")) +
+  labs(title = "Kevin Over Time", x = "Year", y = "Proportion") +
+  scale_color_discrete(name = "Name", labels = c("Kev", "Kevin"))
  ```
