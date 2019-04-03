@@ -15,3 +15,16 @@ filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1988,sex=="
 filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1990,sex=="F")%>%
   summarise(sum(n))
 ```
+
+```{r}
+mad <-  filter(babynames, str_detect(babynames$name, "Mad")) %>%
+  group_by(year) %>%
+  summarize(sumprop = sum(prop))
+madeline <- filter(babynames, str_detect(babynames$name, "Madeline")) %>%
+  group_by(year) %>%
+  summarize(sumprop = sum(prop))
+
+ggplot(data = madeline) +
+  geom_line(aes(x = year, y = sumprop), color = ) +
+  geom_line(data = mad, aes(x = year, y = sumprop), color = "violet")
+```
