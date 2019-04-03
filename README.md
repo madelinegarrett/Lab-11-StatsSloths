@@ -46,3 +46,17 @@ ggplot(data = madeline) +
   geom_line(aes(x = year, y = sumprop), color = ) +
   geom_line(data = mad, aes(x = year, y = sumprop), color = "violet")
 ```
+
+```{r}
+kev <- filter(babynames,str_detect(babynames$name,"^Kev")) %>%
+  group_by(year) %>%
+  summarize(proportion = sum(prop))
+
+kevin <- filter(babynames,str_detect(babynames$name,"^Kev[aeiouy]n$"), sex=="M") %>%
+  group_by(year) %>%
+  summarize(proportion = sum(prop))
+
+ggplot() +
+  geom_line(data = kev, mapping = aes(x = year, y = proportion, color = "orange")) +
+  geom_line(data = kevin, mapping = aes(x = year, y = proportion, color = "blue"))
+ ```
