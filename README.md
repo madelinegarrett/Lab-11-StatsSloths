@@ -35,6 +35,8 @@ filter(Rachel, year == 1988)%>%
 filter(Rachel, year == 1990)%>%
   summarise(sum(n))
 ```
+### Our Names:
+
 
 ## Individual Sections:
 ### Madeline's Section:
@@ -67,3 +69,5 @@ ggplot() +
   labs(title = "Kevin Over Time", x = "Year", y = "Proportion") +
   scale_color_discrete(name = "Name", labels = c("Kev", "Kevin"))
  ```
+
+## Team Summary:
