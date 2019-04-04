@@ -9,17 +9,37 @@ library(babynames)
 ## Investigating The Little Mermaid Effect
 * To answer our clients question about popular movies impacting number of babies being born we investigated uusing both Regex and a Graph.
 
+* Seeing these graphs which compares Ariel names to all A names in this time we can see that there was a distinct increase in names of babys being born named Ariel following the release of The Little Mermaid.  
+
+* While it is clear that 
 ```{r}
 
 Ariel <- filter(babynames, str_detect(babynames$name, "Ar[iy]+.l+[^a]?$")) %>%
   group_by(year) %>%
   summarize(sumprop = sum(prop))
 
+AllNames <- filter(babynames, str_detect(babynames$name, "A")) %>%
+  group_by(year) %>%
+  summarize(sumprop = sum(prop))
 
 ggplot(data = Ariel) +
   geom_line(aes(x = year, y = sumprop), color = "maroon") +
-  geom_vline(xintercept=1989) +
+  geom_vline(xintercept=1989) + 
   ggtitle("The Name Ariel Over Time")
+
+ggplot(data = Ariel) +
+  geom_line(aes(x = year, y = sumprop), color = "maroon") +
+  geom_vline(xintercept=1989) + 
+  ggtitle("The Name Ariel In 1988 to 1990 ")+
+  coord_cartesian(xlim = c(1988, 1990))
+ggplot(data = AllNames)+
+    geom_line(aes(x = year, y = sumprop), color = "maroon") +
+    geom_vline(xintercept=1989) +
+  ggtitle("A Names Over Time")+
+  coord_cartesian(xlim = c(2000, 2017))
+  
+
+
 ```
 
 
