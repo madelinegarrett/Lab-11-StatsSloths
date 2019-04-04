@@ -37,15 +37,16 @@ filter(Rachel, year == 1990)%>%
 ```
 ### Our Names:
 * Kevin: Change in Proportion = -0.00742732
-*Proportion in 1983 - 0.00943364
-*Proportion in 2000 - 0.00652632 (Birth year)
-*Proportion in 2017 - 0.00200632
+* Proportion in 1983 - 0.00943364
+* Proportion in 2000 - 0.00652632 (Birth year)
+* Proportion in 2017 - 0.00200632
 ```{r}
 kevin_name <- filter(babynames, str_detect(babynames$name,"^Kev[aeiouy]n$")) %>%
   group_by(year) %>%
   summarize(proportion = sum(prop)) %>%
   filter(year%in%(1983:2017))
 ```
+
 
 ## Individual Sections:
 ### Madeline's Section:
