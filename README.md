@@ -1,5 +1,7 @@
 # Lab-11-StatsSloths
 
+## Team Section:
+### Ariel and Rachel Regexs:
 * Ariel 1973 : 52
 ```{r}
 filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1973,sex=="F")%>%
@@ -34,6 +36,8 @@ filter(Rachel, year == 1990)%>%
   summarise(sum(n))
 ```
 
+## Individual Sections:
+### Madeline's Section:
 ```{r}
 mad <-  filter(babynames, str_detect(babynames$name, "Mad")) %>%
   group_by(year) %>%
@@ -47,6 +51,7 @@ ggplot(data = madeline) +
   geom_line(data = mad, aes(x = year, y = sumprop), color = "violet")
 ```
 
+### Kevin's Section:
 ```{r}
 kev <- filter(babynames,str_detect(babynames$name,"^Kev")) %>%
   group_by(year) %>%
