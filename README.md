@@ -64,7 +64,7 @@ ggplot(data = madeline) +
 ```
 
 ### Kevin's Section:
-* My name is less popullar now than in 2000, my birth year.
+* My name is less popular now than in 2000, my birth year.
 * My name makes up most of the names that start with my first three letters.
 ```{r}
 kev <- filter(babynames,str_detect(babynames$name,"^Kev")) %>%
