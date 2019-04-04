@@ -24,20 +24,20 @@ ggplot(data = Ariel) +
 
 
 ### Ariel and Rachel Regexs:
-In 1973 There where 52 versions of Ariel. 
-* Ariel 1973 : 52
+In 1973 There where 52 observations and 2 variations of Ariel. 
+* Ariel 1973 : 52 observations, 2 variations
 ```{r}
 filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1973,sex=="F")%>%
   summarise(sum(n))
 ```
-In 1988 there were 1617 versions of Ariel.  
-* Ariel 1988 : 1617
+In 1988 there were 1617 observations and 7 variations of Ariel.  
+* Ariel 1988 : 1617 observations, 7 variations
 ```{r}
 filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1988,sex=="F")%>%
   summarise(sum(n))
 ```
-In 1990 there were 5366 versions of Ariel. 
-* Ariel 1990 : 5366
+In 1990 there were 5366 5366 observations and 8 variations of Ariel. 
+* Ariel 1990 : 5366 observations, 8 variations
 ```{r}
 filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1990,sex=="F")%>%
   summarise(sum(n))
@@ -47,22 +47,22 @@ filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1990,sex=="
 ```{r, include = FALSE}
 Rachel <- filter(babynames,str_detect(babynames$name,"Ra[ey]?ch.*l"),year%in%c(1973,1988,1990)) %>% filter(name!="Rachelann") %>% filter(name!="Rachelanne")
 ```
-In 1973 there wher 8367 versions of Racheal.
-* Rachel 1973 : 8367
+In 1973 there wher 8367 observations and 14 variations of Racheal.
+* Rachel 1973 : 8367 observations, 14 variations 
 ```{r}
 filter(Rachel, year == 1973)%>%
   summarise(sum(n))
 ```
 
-In 1988 there were 19999 versions of Racheal. 
-* Rachel 1988 : 19999
+In 1988 there were 19999 observations and 19 variations  of Racheal. 
+* Rachel 1988 : 19999 observations, 19 variations 
 ```{r}
 filter(Rachel, year == 1988)%>%
   summarise(sum(n))
 ```
 
-In 1990 there were 20407 versions of Racheal.
-* Rachel 1990 : 20407
+In 1990 there were 20407 observations and 18 variations  of Racheal.
+* Rachel 1990 : 20407 observations, 18 variations 
 ```{r}
 filter(Rachel, year == 1990)%>%
   summarise(sum(n))
