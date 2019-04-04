@@ -89,6 +89,51 @@ filter(Rachel, year == 1990)%>%
 ```
 
 What are the chances a girl born in 1973 would be named either Rachel or Ariel (including various versions)? In 1988? In 1990? In 2017?
+* 1973: 0.005773683
+```{r}
+R1973 <- (filter(Rachel, year == 1973))%>%
+  summarise(sum(n))
+A1973 <- filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1973,sex=="F")%>%
+  summarise(sum(n))
+girls1973 <- filter(babynames, sex == "F", year == 1973)%>%
+  summarise(sum(n))
+RA1973 <- (R1973 + A1973)/girls1973
+RA1973
+```
+* 1988: 0.01214199
+```{r}
+R1988 <- (filter(Rachel, year == 1988))%>%
+  summarise(sum(n))
+A1988 <- filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1988,sex=="F")%>%
+  summarise(sum(n))
+girls1988 <- filter(babynames, sex == "F", year == 1988)%>%
+  summarise(sum(n))
+RA1988 <- (R1988 + A1988)/girls1988
+RA1988
+```
+* 1990: 0.0135787
+```{r}
+R1990 <- (filter(Rachel, year == 1990))%>%
+  summarise(sum(n))
+A1990 <- filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1990,sex=="F")%>%
+  summarise(sum(n))
+girls1990 <- filter(babynames, sex == "F", year == 1990)%>%
+  summarise(sum(n))
+RA1990 <- (R1990 + A1990)/girls1990
+RA1990
+```
+* 2017: 0.001867029
+```{r}
+R2017 <- (filter(Rachel, year == 2017))%>%
+  summarise(sum(n))
+A2017 <- filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==2017,sex=="F")%>%
+  summarise(sum(n))
+girls2017 <- filter(babynames, sex == "F", year == 2017)%>%
+  summarise(sum(n))
+RA2017 <- (R2017 + A2017)/girls2017
+RA2017
+```
+
 ### Our Names:
 * Kevin: Change in Proportion = -0.00742732
 * Proportion in 1983 - 0.00943364
