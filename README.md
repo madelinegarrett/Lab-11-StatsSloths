@@ -36,6 +36,9 @@ filter(Rachel, year == 1990)%>%
   summarise(sum(n))
 ```
 ### Our Names:
+* Kevin: Proportion in 1983 - 0.00943364
+         Proportion in 2000 - 0.00652632 (Birth year)
+         Proportion in 2017 - 0.00200632
 ```{r}
 kevin_name <- filter(babynames, str_detect(babynames$name,"^Kev[aeiouy]n$")) %>%
   group_by(year) %>%
