@@ -1,40 +1,74 @@
 # Lab-11-StatsSloths
 
-## Team Section:
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse) 
+install.packages("babynames") 
+library(babynames)
+```
+## Investigating The Little Mermaid Effect
+* To answer our clients question about popular movies impacting number of babies being born we investigated uusing both Regex and a Graph.
+
+```{r}
+
+Ariel <- filter(babynames, str_detect(babynames$name, "Ar[iy]+.l+[^a]?$")) %>%
+  group_by(year) %>%
+  summarize(sumprop = sum(prop))
+
+
+ggplot(data = Ariel) +
+  geom_line(aes(x = year, y = sumprop), color = "maroon") +
+  geom_vline(xintercept=1989) +
+  ggtitle("The Name Ariel Over Time")
+```
+
+
 ### Ariel and Rachel Regexs:
+In 1973 There where 52 versions of Ariel. 
 * Ariel 1973 : 52
 ```{r}
 filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1973,sex=="F")%>%
   summarise(sum(n))
 ```
+In 1988 there were 1617 versions of Ariel.  
 * Ariel 1988 : 1617
 ```{r}
 filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1988,sex=="F")%>%
   summarise(sum(n))
 ```
+In 1990 there were 5366 versions of Ariel. 
 * Ariel 1990 : 5366
 ```{r}
 filter(babynames,str_detect(babynames$name,"Ar[iy]+.l+[^a]?$"),year==1990,sex=="F")%>%
   summarise(sum(n))
 ```
-```{r}
+
+
+```{r, include = FALSE}
 Rachel <- filter(babynames,str_detect(babynames$name,"Ra[ey]?ch.*l"),year%in%c(1973,1988,1990)) %>% filter(name!="Rachelann") %>% filter(name!="Rachelanne")
 ```
+In 1973 there wher 8367 versions of Racheal.
 * Rachel 1973 : 8367
 ```{r}
 filter(Rachel, year == 1973)%>%
   summarise(sum(n))
 ```
+
+In 1988 there were 19999 versions of Racheal. 
 * Rachel 1988 : 19999
 ```{r}
 filter(Rachel, year == 1988)%>%
   summarise(sum(n))
 ```
+
+In 1990 there were 20407 versions of Racheal.
 * Rachel 1990 : 20407
 ```{r}
 filter(Rachel, year == 1990)%>%
   summarise(sum(n))
 ```
+
+What are the chances a girl born in 1973 would be named either Rachel or Ariel (including various versions)? In 1988? In 1990? In 2017?
 ### Our Names:
 * Kevin: Change in Proportion = -0.00742732
 * Proportion in 1983 - 0.00943364
