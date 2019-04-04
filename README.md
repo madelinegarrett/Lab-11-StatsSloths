@@ -64,6 +64,7 @@ ggplot(data = madeline) +
 ```
 
 ### Kevin's Section:
+* My name is less popullar now than in 2000, my birth year.
 ```{r}
 kev <- filter(babynames,str_detect(babynames$name,"^Kev")) %>%
   group_by(year) %>%
