@@ -81,5 +81,19 @@ ggplot() +
   labs(title = "Kevin Over Time", x = "Year", y = "Proportion") +
   scale_color_discrete(name = "Name", labels = c("Kev", "Kevin"))
  ```
+ ### Katie's Section:
+ ```{r}
+Kat <- filter(babynames, str_detect(babynames$name, "^Kat")) %>%
+  group_by(year) %>%
+  summarise(prop = sum(prop))
+Katie <- filter(babynames, str_detect(babynames$name, "^Kat[iy]"))%>%
+  group_by(year) %>%
+  summarise(prop = sum(prop))
+ggplot(data = Katie)+
+  geom_line(mapping = aes(x=year, y = prop, color = "pink"))+
+  geom_line(data = Kat, mapping = aes(x = year, y = prop, color = "green"))+
+  labs(title = "Katie Over Time", x = "Year", y = "Proportion")+
+  scale_color_discrete(name = "Name", labels = c("Kat", "Katie"))
+```
 
 ## Team Summary:
