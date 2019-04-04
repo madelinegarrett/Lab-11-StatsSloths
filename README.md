@@ -36,7 +36,12 @@ filter(Rachel, year == 1990)%>%
   summarise(sum(n))
 ```
 ### Our Names:
-
+```{r}
+kevin_name <- filter(babynames, str_detect(babynames$name,"^Kev[aeiouy]n$")) %>%
+  group_by(year) %>%
+  summarize(proportion = sum(prop)) %>%
+  filter(year%in%(1983:2017))
+```
 
 ## Individual Sections:
 ### Madeline's Section:
