@@ -182,7 +182,24 @@ filter(Aguys,diff<Alexander.diff_2) %>% count() /
 filter(Aguys,diff<Alexander.diff_3) %>% arrange(desc(diff))
 
 filter(Aguys,diff<Alexander.diff_3) %>% count() /
-  Aguyss %>% count()  
+  Aguyss %>% count() 
+  
+ggplot(Aguys) +
+  geom_histogram(aes(x=Alexander.diff_1),bins=100) + 
+  geom_vline(aes(xintercept=Alexander.diff_1),color="red",lwd=1)
+  
+  
+ ggplot(Aguys) +
+  geom_histogram(aes(x=Alexander.diff_2),bins=100) + 
+  geom_vline(aes(xintercept=Alexander.diff_2),color="red",lwd=1)
+  
+  
+  ggplot(Aguys) +
+  geom_histogram(aes(x=Alexander.diff_3),bins=100) + 
+  geom_vline(aes(xintercept=Alexander.diff_3),color="red",lwd=1)
+  
+  
+  
 ```
 
 
