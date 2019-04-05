@@ -271,3 +271,4 @@ ggplot() +
   scale_color_discrete(name = "Name", labels = c("Ale", "Alexander"))
  ```
 ## Team Summary:
+* I, Kevin Luth, used a regex function that searched for all names that started with kev, then were followed by any vowel or a y, and then ended with n because those appeared to be common variations of my name. I then plotted the proportion of those findings along with all names that started with the same first three letters using the geom_line plot function. I changed the color of the lines in an attempt to make it easier to distinguish between them because they had similar numbers throughout the timeframe.
