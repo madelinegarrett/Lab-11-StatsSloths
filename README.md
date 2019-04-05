@@ -145,6 +145,17 @@ kevin_name <- filter(babynames, str_detect(babynames$name,"^Kev[aeiouy]n$")) %>%
   summarize(proportion = sum(prop)) %>%
   filter(year%in%(1983:2017))
 ```
+* Alexander: Change in Proportion = 0.00404577
+* Proportion in 1981 - 0.00231855
+* Proportion in 1998 - 0.00868425 (Birth year)
+* Proportion in 2017 - 0.00636432
+
+```{r}
+alexander_name <- filter(babynames, str_detect(babynames$name,"^Alexander")) %>%
+  group_by(year) %>%
+  summarize(proportion = sum(prop)) %>%
+  filter(year%in%(1981:2017))
+```
 
 
 ## Individual Sections:
@@ -197,7 +208,8 @@ ggplot(data = Katie)+
 
 
 ### Zandy's Section:
-
+* My name is about 27% less popular now than my name was in 1998 (my birth year).
+* My name makes up only a small amount of the names that start with my first three letters.
 ```{r}
 ale <- filter(babynames,str_detect(babynames$name,"^Ale")) %>%
   group_by(year) %>%
