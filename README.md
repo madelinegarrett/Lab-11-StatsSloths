@@ -48,8 +48,7 @@ ggplot(data = AllNames)+
 
 ```
 
-
-### Ariel and Rachel Regexs:
+## Ariel and Rachel Regexs:
 In 1973 There where 52 observations and 2 variations of Ariel. 
 * Ariel 1973 : 52 observations, 2 variations
 
@@ -197,7 +196,7 @@ filter(Aguys,diff<Alexander.diff_3) %>% count() /
   
 ```
 
-# Madeline's Name Over Time 
+### Madeline's Name Over Time 
 * These graphs show that while there was a spike in people being named Madeline right around 2000 it has decreased since and has become less popular since 2000 when I was born. The same can be said for names starting with Mad but with a much larger spike and a much larger decrease since 2000. 
 ```{r}
 mad <-  filter(babynames, str_detect(babynames$name, "Mad")) %>%
