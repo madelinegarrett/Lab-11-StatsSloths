@@ -168,7 +168,21 @@ Alexander.diff_2 <- filter(babynames,str_detect(babynames$name,"^Alexander"),yea
 
 Alexander.diff_3 <- filter(babynames,str_detect(babynames$name,"^Alexander"),year==2017,sex=="M") %>% count(wt=prop) - filter(babynames,str_detect(babynames$name,"^Alexander"),year==1998,sex=="M") %>% count(wt=prop)
 
+filter(Aguys,diff<Alexander.diff_1) %>% arrange(desc(diff))
 
+filter(Aguys,diff<Alexander.diff_1) %>% count() /
+  Aguyss %>% count()
+  
+  
+filter(Aguys,diff<Alexander.diff_2) %>% arrange(desc(diff))
+
+filter(Aguys,diff<Alexander.diff_2) %>% count() /
+  Aguyss %>% count()  
+  
+filter(Aguys,diff<Alexander.diff_3) %>% arrange(desc(diff))
+
+filter(Aguys,diff<Alexander.diff_3) %>% count() /
+  Aguyss %>% count()  
 ```
 
 
