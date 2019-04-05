@@ -11,7 +11,7 @@ library(babynames)
 
 * Seeing these graphs which compares Ariel names to all A names in this time we can see that there was a distinct increase in names of babys being born named Ariel following the release of The Little Mermaid.  
 
-* While it is clear that 
+* While it is clear that there was an increase in girls named Ariel following 1989 there was also a general increase in girls with a names at the time so it may not be as much due to the Little Mermaid coming out as it appears. 
 ```{r}
 
 Ariel <- filter(babynames, str_detect(babynames$name, "Ar[iy]+.l+[^a]?$")) %>%
