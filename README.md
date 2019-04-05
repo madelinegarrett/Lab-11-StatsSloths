@@ -145,6 +145,13 @@ kevin_name <- filter(babynames, str_detect(babynames$name,"^Kev[aeiouy]n$")) %>%
   group_by(year) %>%
   summarize(proportion = sum(prop)) %>%
   filter(year%in%(1983:2017))
+  
+ggplot(data=kevin_name) +
+  geom_histogram(mapping = aes(x=proportion),bins=100) +
+  geom_vline(xintercept = quantile(kevin_name$proportion, probs=c(.05,.5,.95)), col=c("red","blue","yellow") ) +
+  geom_vline(xintercept = mean(kevin_name$proportion), col=c("pink")) +
+  ggtitle("Histogram of Proportion of Kevin",subtitle="5, 50, and 95th percentiles and mean (pink)") +
+  xlab("Proportion")
 ```
 
 
