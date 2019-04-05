@@ -152,7 +152,7 @@ ggplot(data=kevin_name) +
   xlab("Proportion")
 ```
 
-Katie: Change in Proportion = 
+Katie: Change in Proportion = -0.00374881
 * Proportion in 1983 -> 0.00434245
 * Proportion in 1999 -> 0.00231012 (Birth Year)
 * Proportion in 2017 -> 0.00059364
