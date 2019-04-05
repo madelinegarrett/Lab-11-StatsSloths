@@ -195,4 +195,22 @@ ggplot(data = Katie)+
   scale_color_discrete(name = "Name", labels = c("Kat", "Katie"))
 ```
 
+
+### Zandy's Section:
+
+```{r}
+ale <- filter(babynames,str_detect(babynames$name,"^Ale")) %>%
+  group_by(year) %>%
+  summarize(proportion = sum(prop))
+
+alexander <- filter(babynames,str_detect(babynames$name,"^Alexander"), sex=="M") %>%
+  group_by(year) %>%
+  summarize(proportion = sum(prop))
+
+ggplot() +
+  geom_line(data = ale, mapping = aes(x = year, y = proportion, color = "purple")) +
+  geom_line(data = alexander, mapping = aes(x = year, y = proportion, color = "green")) +
+  labs(title = "Alexander Over Time", x = "Year", y = "Proportion") +
+  scale_color_discrete(name = "Name", labels = c("Ale", "Alexander"))
+ ```
 ## Team Summary:
