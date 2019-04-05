@@ -135,6 +135,30 @@ RA2017
 ```
 
 ### Our Names:
+
+Madeline: Change in Proportion = -.00556204
+* Proportion in 1983 - .000923903
+* Proportion in 2000 - 0.003236432 (Birth year)
+* Proportion in 2017 - 0.00279638
+```{r}
+named <- filter(babynames,!is.na(name))
+
+Mad <- filter(named, str_detect(named$name, "Mad(e|l|ei|a)l(yn|ine)")) %>%
+  group_by(year) %>%
+  summarize(sumprop = sum(prop))
+
+data<- filter(Mad) 
+quantile(data$sumprop) 
+
+ggplot(data=data) +
+  geom_histogram(mapping = aes(x=sumprop),bins=100) +
+  geom_vline(xintercept = quantile(data$sumprop, probs=c(.05,.5,.95)), col=c("red","green","blue") ) +
+  geom_vline(xintercept = mean(data$sumprop), col=c("orange")) +
+  ggtitle("Histogram of Proportion of Madeline Names",subtitle="5, 50, and 95th percentiles and mean (orange)") +
+  xlab("Proportion )") 
+
+
+```
 * Kevin: Change in Proportion = -0.00742732
 * Proportion in 1983 - 0.00943364
 * Proportion in 2000 - 0.00652632 (Birth year)
