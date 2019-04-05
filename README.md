@@ -155,6 +155,20 @@ alexander_name <- filter(babynames, str_detect(babynames$name,"^Alexander")) %>%
   group_by(year) %>%
   summarize(proportion = sum(prop)) %>%
   filter(year%in%(1981:2017))
+  
+Aguys1 <- filter(babynames,str_detect(babynames$name,"A"),year==1981,sex=="M")
+Aguys2 <- filter(babynames,str_detect(babynames$name,"A"),year==1998,sex=="M")
+Aguys3 <- filter(babynames,str_detect(babynames$name,"A"),year==2017,sex=="M")
+Aguys <- inner_join(Aguys1,Aguys2,Aguys3,by="name") %>% mutate(diff=prop.y-prop.x) %>% select(name,prop.x,prop.y,diff)
+
+Alexander.diff_1 <- filter(babynames,str_detect(babynames$name,"^Alexander"),year==1998,sex=="M") %>% count(wt=prop) - filter(babynames,str_detect(babynames$name,"^Alexander"),year==1981,sex=="M") %>% count(wt=prop)
+
+Alexander.diff_2 <- filter(babynames,str_detect(babynames$name,"^Alexander"),year==2017,sex=="M") %>% count(wt=prop) - filter(babynames,str_detect(babynames$name,"^Alexander"),year==1981,sex=="M") %>% count(wt=prop)
+
+
+Alexander.diff_3 <- filter(babynames,str_detect(babynames$name,"^Alexander"),year==2017,sex=="M") %>% count(wt=prop) - filter(babynames,str_detect(babynames$name,"^Alexander"),year==1998,sex=="M") %>% count(wt=prop)
+
+
 ```
 
 
