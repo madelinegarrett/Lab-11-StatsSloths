@@ -255,6 +255,14 @@ ggplot(data = Katie)+
   labs(title = "Katie Over Time", x = "Year", y = "Proportion")+
   scale_color_discrete(name = "Name", labels = c("Kat", "Katie"))
 ```
+```{r}
+ggplot(data=katie_name) +
+  geom_histogram(mapping = aes(x=prop),bins=100) +
+  geom_vline(xintercept = quantile(katie_name$prop, probs=c(.05,.5,.95)), col=c("green","blue","pink") ) +
+  geom_vline(xintercept = mean(katie_name$prop), col=c("pink")) +
+  ggtitle("Histogram of Proportion of Katie Names",subtitle="5, 50, and 95th percentiles and mean (red)") +
+  xlab("Proportion")
+```
 
 ### Zandy's Name Over Time 
 * My name is about 27% less popular now than my name was in 1998 (my birth year).
@@ -277,3 +285,4 @@ ggplot() +
 
 ## Team Summary:
 * I, Kevin Luth, used a regex function that searched for all names that started with kev, then were followed by any vowel or a y, and then ended with n because those appeared to be common variations of my name. I then plotted the proportion of those findings along with all names that started with the same first three letters using the geom_line plot function. I changed the color of the lines in an attempt to make it easier to distinguish between them because they had similar numbers throughout the timeframe.
+* I, Katie Stewart, used a regex function to search for all names starting with kat. I then used a regex to find any followed by an i or y. I created plots of the proportion of my findings using the geom line function. I used different colors to make my plots easier to interpret along with adding titles, x axis and y axis names and a legend.
