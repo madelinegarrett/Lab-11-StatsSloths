@@ -136,7 +136,7 @@ ggplot(data=data) +
 
 
 ```
-* Kevin: Change in Proportion = -0.00742732
+Kevin: Change in Proportion = -0.00742732
 * Proportion in 1983 - 0.00943364
 * Proportion in 2000 - 0.00652632 (Birth year)
 * Proportion in 2017 - 0.00200632
@@ -148,7 +148,7 @@ kevin_name <- filter(babynames, str_detect(babynames$name,"^Kev[aeiouy]n$")) %>%
 ```
 
 
-* Alexander: Change in Proportion = 0.00404577
+Alexander: Change in Proportion = 0.00404577
 * Proportion in 1981 - 0.00231855
 * Proportion in 1998 - 0.00868425 (Birth year)
 * Proportion in 2017 - 0.00636432
