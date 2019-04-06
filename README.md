@@ -6,7 +6,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse) 
-install.packages("babynames") 
+
 library(babynames)
 ```
 ## Investigating The Little Mermaid Effect
@@ -48,7 +48,8 @@ ggplot(data = AllNames)+
 
 ```
 
-## Ariel and Rachel Regexs:
+
+### Ariel and Rachel Regexs:
 In 1973 There where 52 observations and 2 variations of Ariel. 
 * Ariel 1973 : 52 observations, 2 variations
 
@@ -132,13 +133,13 @@ ggplot(data=data) +
   geom_vline(xintercept = mean(data$sumprop), col=c("orange")) +
   ggtitle("Histogram of Proportion of Madeline Names",subtitle="5, 50, and 95th percentiles and mean (orange)") +
   xlab("Proportion )") 
-
 ```
-Kevin: Change in Proportion = -0.00742732
+
+* Kevin: Change in Proportion = -0.00742732
 * Proportion in 1983 - 0.00943364
 * Proportion in 2000 - 0.00652632 (Birth year)
 * Proportion in 2017 - 0.00200632
-```{r, include = FALSE}
+```{r}
 kevin_name <- filter(babynames, str_detect(babynames$name,"^Kev[aeiouy]n$")) %>%
   group_by(year) %>%
   summarize(proportion = sum(prop)) %>%
@@ -152,18 +153,8 @@ ggplot(data=kevin_name) +
   xlab("Proportion")
 ```
 
-Katie: Change in Proportion = -0.00374881
-* Proportion in 1983 -> 0.00434245
-* Proportion in 1999 -> 0.00231012 (Birth Year)
-* Proportion in 2017 -> 0.00059364
-```{r}
-katie_name <- filter(babynames, str_detect(babynames$name, "^Kat[iy]"))%>%
-  group_by(year)%>%
-  summarize(prop = sum(prop))%>%
-  filter(year%in%(1983:2017))
-```
 
-Alexander: Change in Proportion = 0.00404577
+* Alexander: Change in Proportion = 0.00404577
 * Proportion in 1981 - 0.00231855
 * Proportion in 1998 - 0.00868425 (Birth year)
 * Proportion in 2017 - 0.00636432
@@ -183,6 +174,7 @@ Alexander.diff_1 <- filter(babynames,str_detect(babynames$name,"^Alexander"),yea
 
 Alexander.diff_2 <- filter(babynames,str_detect(babynames$name,"^Alexander"),year==2017,sex=="M") %>% count(wt=prop) - filter(babynames,str_detect(babynames$name,"^Alexander"),year==1981,sex=="M") %>% count(wt=prop)
 
+
 Alexander.diff_3 <- filter(babynames,str_detect(babynames$name,"^Alexander"),year==2017,sex=="M") %>% count(wt=prop) - filter(babynames,str_detect(babynames$name,"^Alexander"),year==1998,sex=="M") %>% count(wt=prop)
 Aguys <- inner_join(Aguys1,Aguys2,Aguys3,by="name") %>% mutate(diff=prop.y-prop.x) %>% select(name,prop.x,prop.y,diff)
 
@@ -190,6 +182,7 @@ filter(Aguys,diff<Alexander.diff_1) %>% arrange(desc(diff))
 
 filter(Aguys,diff<Alexander.diff_1) %>% count() /
   Aguys %>% count()
+  
   
 filter(Aguys,diff<Alexander.diff_2) %>% arrange(desc(diff))
 
@@ -202,6 +195,21 @@ filter(Aguys,diff<Alexander.diff_3) %>% count() /
   Aguys %>% count() 
   
 ```
+
+
+Katie: Change in Proportion = -0.00374881
+* Proportion in 1983 -> 0.00434245
+* Proportion in 1999 -> 0.00231012 (Birth Year)
+* Proportion in 2017 -> 0.00059364
+
+
+```{r}
+katie_name <- filter(babynames, str_detect(babynames$name, "^Kat[iy]"))%>%
+  group_by(year)%>%
+  summarize(prop = sum(prop))%>%
+  filter(year%in%(1983:2017))
+```
+
 
 ### Madeline's Name Over Time 
 * These graphs show that while there was a spike in people being named Madeline right around 2000 it has decreased since and has become less popular since 2000 when I was born. The same can be said for names starting with Mad but with a much larger spike and a much larger decrease since 2000. 
@@ -237,32 +245,8 @@ ggplot() +
   geom_line(data = kevin, mapping = aes(x = year, y = proportion, color = "blue")) +
   labs(title = "Kevin Over Time", x = "Year", y = "Proportion") +
   scale_color_discrete(name = "Name", labels = c("Kev", "Kevin"))
- ```
+```
  
-### Katie's Name Over Time:
- * My name is less popular now than it was in my birth year, 1999.
- * My name does not make up most of the names that start with "Kat", the first three letters of my name.
- ```{r}
-Kat <- filter(babynames, str_detect(babynames$name, "^Kat")) %>%
-  group_by(year) %>%
-  summarise(prop = sum(prop))
-Katie <- filter(babynames, str_detect(babynames$name, "^Kat[iy]"))%>%
-  group_by(year) %>%
-  summarise(prop = sum(prop))
-ggplot(data = Katie)+
-  geom_line(mapping = aes(x=year, y = prop, color = "pink"))+
-  geom_line(data = Kat, mapping = aes(x = year, y = prop, color = "green"))+
-  labs(title = "Katie Over Time", x = "Year", y = "Proportion")+
-  scale_color_discrete(name = "Name", labels = c("Kat", "Katie"))
-```
-```{r}
-ggplot(data=katie_name) +
-  geom_histogram(mapping = aes(x=prop),bins=100) +
-  geom_vline(xintercept = quantile(katie_name$prop, probs=c(.05,.5,.95)), col=c("green","blue","pink") ) +
-  geom_vline(xintercept = mean(katie_name$prop), col=c("pink")) +
-  ggtitle("Histogram of Proportion of Katie Names",subtitle="5, 50, and 95th percentiles and mean (red)") +
-  xlab("Proportion")
-```
 
 ### Zandy's Name Over Time 
 * My name is about 27% less popular now than my name was in 1998 (my birth year).
@@ -282,7 +266,29 @@ ggplot() +
   labs(title = "Alexander Over Time", x = "Year", y = "Proportion") +
   scale_color_discrete(name = "Name", labels = c("Ale", "Alexander"))
 ```
+ 
+ 
+### Katie's Name Over Time 
+```{r}
+Kat <- filter(babynames, str_detect(babynames$name, "^Kat")) %>%
+  group_by(year) %>%
+  summarise(prop = sum(prop))
+Katie <- filter(babynames, str_detect(babynames$name, "^Kat[iy]"))%>%
+  group_by(year) %>%
+  summarise(prop = sum(prop))
+ggplot(data = Katie)+
+  geom_line(mapping = aes(x=year, y = prop, color = "pink"))+
+  geom_line(data = Kat, mapping = aes(x = year, y = prop, color = "green"))+
+  labs(title = "Katie Over Time", x = "Year", y = "Proportion")+
+  scale_color_discrete(name = "Name", labels = c("Kat", "Katie"))
+```
 
-## Team Summary:
+
+## Team Summary 
+
+
 * I, Kevin Luth, used a regex function that searched for all names that started with kev, then were followed by any vowel or a y, and then ended with n because those appeared to be common variations of my name. I then plotted the proportion of those findings along with all names that started with the same first three letters using the geom_line plot function. I changed the color of the lines in an attempt to make it easier to distinguish between them because they had similar numbers throughout the timeframe.
+
 * I, Katie Stewart, used a regex function to search for all names starting with kat. I then used a regex to find any followed by an i or y. I created plots of the proportion of my findings using the geom line function. I used different colors to make my plots easier to interpret along with adding titles, x axis and y axis names and a legend.
+
+* I, Madeline Garrett, used a regex function and created a graph of my name over time and just names that start with Mad over time. I changed the color to show which one is which. I then found the proportion change of my name and ploted a histogram with that information. 
